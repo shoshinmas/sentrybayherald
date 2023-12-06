@@ -1,5 +1,6 @@
 package com.beardedbrothers.sentrybayherald.controller;
 
+import com.beardedbrothers.sentrybayherald.dto.LoginRequest;
 import com.beardedbrothers.sentrybayherald.dto.RegisterRequest;
 import com.beardedbrothers.sentrybayherald.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,10 @@ public class AuthController {
     public ResponseEntity signup(@RequestBody RegisterRequest registerRequest) {
         authService.signup(registerRequest);
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public LoginRequest login(@RequestBody LoginRequest loginRequest) {
+        return authService.login(loginRequest);
     }
 }
